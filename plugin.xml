@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="criteriadb_plugin_cordova" version="0.1.1">
+   	<name>LocationCriteriaDB</name>
+   	<js-module name="LocationCriteriaDB" src="www/LocationCriteriaDB.js">
+    	<clobbers target="cordova.plugins.LocationCriteriaDB" />
+   	</js-module>
+   	<platform name="android">
+
+		<config-file target="AndroidManifest.xml" parent="/manifest">
+	        <uses-permission android:name="android.permission.INTERNET"/>
+	        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	    </config-file>
+
+    	<config-file parent="/*" target="res/xml/config.xml">
+        	<feature name="LocationCriteriaDB">
+            	<param name="android-package" value="criteriadb_plugin_cordova.LocationCriteriaDB" />
+         	</feature>
+      	</config-file>
+
+      	<config-file parent="/*" target="AndroidManifest.xml" />
+
+      	<source-file src="src/android/LocationCriteriaDB.java" target-dir="src/criteriadb_plugin_cordova/LocationCriteriaDB" />
+      	
+   </platform>
+</plugin>

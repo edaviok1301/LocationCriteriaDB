@@ -1,0 +1,17 @@
+{
+  "name": "criteriadb_plugin_cordova",
+  "version": "0.1.1",
+  "description": "Plugin de cordova para la localicacion usando criteria y guardandolo el SQLite",
+  "cordova": {
+    "id": "criteriadb_plugin_cordova",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "",
+  "license": "\u001b[A\u001b[D\u001b[B"
+}
