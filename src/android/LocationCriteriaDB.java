@@ -42,9 +42,19 @@ public class LocationCriteriaDB extends CordovaPlugin {
         newCallbackContext=callbackContext;//set to newCallbackContext the callbackContext for use anywhere in this class
         locationManager = (LocationManager) cordova.getActivity().getSystemService(Context.LOCATION_SERVICE);//Assign us the identifier we will use (LOCATION_SERVICE) in this case
         if (action.equals("startTrackLocation")) {
-            Log.e(TAG,"init if(startTrackLocation)");
-            String options = args.getString(0);
-            this.startTrackLocation(options,newCallbackContext);
+            this.cordova.getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Log.e(TAG,"init if(startTrackLocation)");
+                    String options = null;
+                    try {
+                        options = args.getString(0);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    startTrackLocation(options,newCallbackContext);        
+                }
+            });
             return true;
         }
         if(action.equals("stopTrackLocation")){
