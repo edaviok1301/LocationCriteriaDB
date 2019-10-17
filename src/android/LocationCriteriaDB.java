@@ -102,7 +102,7 @@ public class LocationCriteriaDB extends CordovaPlugin {
     @SuppressLint("MissingPermission")
     private void initTracker(){
         Criteria criteria=new Criteria();
-        criteria.setAccuracy(Criteria.ACCURACY_HIGH);
+        criteria.setAccuracy(Criteria.ACCURACY_FINE);
         criteria.setAltitudeRequired(false);//Puede ser una opcion del JSONObject
         criteria.setBearingRequired(true);//Puede ser una opcion del JSONObject
         criteria.setCostAllowed(false);
