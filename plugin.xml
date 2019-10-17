@@ -18,9 +18,11 @@
          	</feature>
       	</config-file>
 
-      	<config-file parent="/*" target="AndroidManifest.xml" />
+      	<config-file parent="/*" target="AndroidManifest.xml"/>      	
 
       	<source-file src="src/android/LocationCriteriaDB.java" target-dir="src/criteriadb_plugin_cordova/LocationCriteriaDB" />
-      	
+      	<source-file src="src/android/DataBaseHelper.java" target-dir="src/criteriadb_plugin_cordova/LocationCriteriaDB"/>
+      	<source-file src="src/android/MyLocation.java" target-dir="src/criteriadb_plugin_cordova/LocationCriteriaDB"/>
+
    </platform>
 </plugin>
