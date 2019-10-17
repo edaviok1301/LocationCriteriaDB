@@ -89,7 +89,7 @@ public class LocationCriteriaDB extends CordovaPlugin {
 
     /**This class will track the person's location and store it in an internal database (SQLite)*/
     private void startTrackLocation(String message, CallbackContext callbackContext) {
-        Log.e(TAG,"init startTrackLocation ");
+        Log.e(TAG,"init startTrackLocation");
         if(!cordova.hasPermission(Manifest.permission.ACCESS_FINE_LOCATION) && !cordova.hasPermission(Manifest.permission.ACCESS_COARSE_LOCATION)){
             cordova.requestPermissions(this,REQUEST_CODE_ENABLE_PERMISSION,new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.ACCESS_COARSE_LOCATION});
@@ -101,6 +101,7 @@ public class LocationCriteriaDB extends CordovaPlugin {
 
     @SuppressLint("MissingPermission")
     private void initTracker(){
+        Log.e(TAG,"init initTracker");
         Criteria criteria=new Criteria();
         criteria.setAccuracy(Criteria.ACCURACY_FINE);
         criteria.setAltitudeRequired(false);//Puede ser una opcion del JSONObject
@@ -118,8 +119,14 @@ public class LocationCriteriaDB extends CordovaPlugin {
     private final LocationListener locationListenerBest = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
+            Log.e(TAG,"onLocationChanged");
             MyLocation myLocation=new MyLocation(String.valueOf(location.getLatitude()),String.valueOf(location.getLongitude()));
-            db.insertMyLocation(myLocation);
+            if(db.insertMyLocation(myLocation) != 0){
+                Log.e(TAG,"insert location");
+            }else{
+                Log.e(TAG,"not register location");
+            }
+            
         }
 
         @Override
@@ -137,5 +144,6 @@ public class LocationCriteriaDB extends CordovaPlugin {
 
         }
     };
+
 
 }
