@@ -37,12 +37,13 @@ public class LocationCriteriaDB extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-
+        Log.e(TAG,"init Plugin");
         db = new DataBaseHelper(cordova.getContext());
         newCallbackContext=callbackContext;//set to newCallbackContext the callbackContext for use anywhere in this class
         locationManager = (LocationManager) cordova.getActivity().getSystemService(Context.LOCATION_SERVICE);//Assign us the identifier we will use (LOCATION_SERVICE) in this case
         if (action.equals("startTrackLocation")) {
-            JSONObject options = args.getJSONObject(0);
+            Log.e(TAG,"init if(startTrackLocation)");
+            String options = args.getString(0);
             this.startTrackLocation(options,newCallbackContext);
             return true;
         }
@@ -87,8 +88,8 @@ public class LocationCriteriaDB extends CordovaPlugin {
     }
 
     /**This class will track the person's location and store it in an internal database (SQLite)*/
-    private void startTrackLocation(JSONObject message, CallbackContext callbackContext) {
-
+    private void startTrackLocation(String message, CallbackContext callbackContext) {
+        Log.e(TAG,"init startTrackLocation ");
         if(!cordova.hasPermission(Manifest.permission.ACCESS_FINE_LOCATION) && !cordova.hasPermission(Manifest.permission.ACCESS_COARSE_LOCATION)){
             cordova.requestPermissions(this,REQUEST_CODE_ENABLE_PERMISSION,new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.ACCESS_COARSE_LOCATION});
