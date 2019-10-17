@@ -115,7 +115,7 @@ public class LocationCriteriaDB extends CordovaPlugin {
             Log.e(TAG,"there are provider");
             locationManager.requestLocationUpdates(provider, 5 * SECOND, 10,locationListenerBest);
         }else{
-            Log.e(TAG,"there are provider");
+            Log.e(TAG,"there aren't provider");
         }
         Log.e(TAG,"end initTracker");
     }
