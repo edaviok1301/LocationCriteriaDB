@@ -112,8 +112,12 @@ public class LocationCriteriaDB extends CordovaPlugin {
         String provider = locationManager.getBestProvider(criteria,true);
 
         if(provider != null){
+            Log.e(TAG,"there are provider");
             locationManager.requestLocationUpdates(provider, 5 * SECOND, 10,locationListenerBest);
+        }else{
+            Log.e(TAG,"there are provider");
         }
+        Log.e(TAG,"end initTracker");
     }
 
     private final LocationListener locationListenerBest = new LocationListener() {
@@ -126,7 +130,7 @@ public class LocationCriteriaDB extends CordovaPlugin {
             }else{
                 Log.e(TAG,"not register location");
             }
-            
+
         }
 
         @Override
